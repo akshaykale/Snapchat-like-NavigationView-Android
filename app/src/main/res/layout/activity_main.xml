@@ -16,13 +16,15 @@
             android:id="@+id/ib_titalbar_left_icon"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/ico_menu_list"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:scaleType="centerInside"
+            android:padding="@dimen/titlebar_icon_padding"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            android:elevation="5dp"/>
 
         <TextView
             android:id="@+id/tv_toolbar_title"
@@ -41,13 +43,15 @@
             android:id="@+id/ib_titalbar_right_icon"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/ico_gallery"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:padding="@dimen/titlebar_icon_padding"
             android:layout_marginRight="10dp"
             android:scaleType="centerInside"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp" />
+            android:layout_marginEnd="10dp"
+            android:elevation="5dp"/>
 
     </RelativeLayout>
 
@@ -58,6 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:padding="7dp"
         android:layout_margin="@dimen/fab_margin"
         android:visibility="gone"
         app:srcCompat="@android:drawable/ic_dialog_email" />
