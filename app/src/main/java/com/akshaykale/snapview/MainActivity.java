@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     int CURRENT_POSITION = 1;
     private Window window;
 
+    TextView toolbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         window = getWindow();
         rootView = findViewById(R.id.root_view);
         viewPager = findViewById(R.id.view_pager_main);
+        toolbarTitle = findViewById(R.id.tv_toolbar_title);
 
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
@@ -95,13 +99,16 @@ public class MainActivity extends AppCompatActivity {
                 CURRENT_POSITION = position;
                 Log.d("pager onPageSelected","position: "+position);
                 if (position == 0){
-                    rootView.setBackgroundColor(Color.parseColor(colourBlentA[9]));
-                    changeStatusBarColour(Color.parseColor("#691A99"));
+                    rootView.setBackgroundColor(Color.parseColor(colourBlentA[9])); //Change the title bar colour
+                    toolbarTitle.setText("Title Violate");  //change the actionbar widget
+                    changeStatusBarColour(Color.parseColor("#691A99")); //change the status bar colour
                 }else if (position ==1){
                     rootView.setBackgroundColor(Color.parseColor(colourBlentA[0]));
+                    toolbarTitle.setText("Title Black");
                     changeStatusBarColour(Color.parseColor("#000000"));
                 }else if (position == 2){
                     rootView.setBackgroundColor(Color.parseColor(colourBlentB[9]));
+                    toolbarTitle.setText("Title Orange");
                     changeStatusBarColour(Color.parseColor("#BF360C"));
                 }
             }
@@ -111,6 +118,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("pager onPageStateChan","state: "+state);
             }
         });
+
+        ViewPager.PageTransformer pageTransformer = new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View view, float position) {
+                //view.setTranslationX(view.getWidth() * -position);
+
+                if(position <= -1.0F || position >= 1.0F) {
+                    view.setAlpha(0.0F);
+                } else if( position == 0.0F ) {
+                    view.setAlpha(1.0F);
+                } else {
+                    // position is between -1.0F & 0.0F OR 0.0F & 1.0F
+                    view.setAlpha(1.0F - Math.abs(position));
+                }
+            }
+        };
+        viewPager.setPageTransformer(false, pageTransformer);
     }
 
     @Override

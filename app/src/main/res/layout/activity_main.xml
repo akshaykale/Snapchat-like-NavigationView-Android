@@ -12,14 +12,42 @@
         android:layout_height="?attr/actionBarSize"
         >
 
+        <ImageView
+            android:id="@+id/ib_titalbar_left_icon"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+
         <TextView
+            android:id="@+id/tv_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="ToolBar"
             android:textColor="#ffffff"
             android:textStyle="bold"
-            />
+            android:layout_toLeftOf="@id/ib_titalbar_right_icon"
+            android:layout_toRightOf="@id/ib_titalbar_left_icon"
+            android:layout_toStartOf="@id/ib_titalbar_right_icon"
+            android:layout_toEndOf="@id/ib_titalbar_left_icon" />
+
+        <ImageView
+            android:id="@+id/ib_titalbar_right_icon"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerInside"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp" />
 
     </RelativeLayout>
 
@@ -31,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>
